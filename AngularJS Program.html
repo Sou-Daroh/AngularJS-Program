@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+  <title>Angular Program</title>
+</head>
+
+<body ng-app="myApp">
+
+<div ng-controller="personCtrl" ng-init="names=['Micheal', 'Phil', 'Jay', 'Joe', 'Claire', 'Alex', 'Haley', 'Luke', 'Gloria', 'Manny']">
+
+  <h3>People</h3>
+  
+  <p>Click the button to get a random name:</p> 
+  
+  <p>The random name is: <span ng-bind="randomName"></span></p>
+  
+  <button ng-click="pickRandomName()">Get Random Name</button>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('personCtrl', function($scope) {
+
+    $scope.pickRandomName = function() {
+        var index = Math.floor(Math.random() * $scope.names.length);
+        $scope.randomName = $scope.names[index];
+    }
+
+});
+</script>
+
+</body>
+</html>
